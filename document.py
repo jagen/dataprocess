@@ -1,10 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from docx2html import convert
+from lxml import etree
+import sys
+import io
 
 def main():
-    html = convert('滑膜炎.docx')
-    print(html.encoding('utf-8'))
+    xml = etree.parse('滑膜炎/word/document.xml')
+    root = xml.getroot()
+    ns = root.nsmap
+    body = xml.xpath('//w:document/w:body', namespaces = ns)
+    print(body)
+    textList = body[0].xpath('//w:p[1]/w:r/w:t', namespaces = ns)
+    for t in textList:
+        print(t.text)
 
 if __name__ == '__main__':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     main()

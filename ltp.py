@@ -8,7 +8,7 @@ import os
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 分词
-LTP_DATA_DIR = '/usr/local/ltp_data'
+LTP_DATA_DIR = '/Users/Jagen/ltp_data/'
 cws_model_path = os.path.join(LTP_DATA_DIR, 'cws.model')
 segmentor = Segmentor()
 segmentor.load(cws_model_path)
@@ -18,7 +18,7 @@ segmentor.release()
 
 # 使用外部词典
 segmentor = Segmentor()
-segmentor.load_with_lexicon(cws_model_path, '/Users/jagenzhao/dataprocess/lexicon')
+segmentor.load_with_lexicon(cws_model_path, './lexicon')
 #segmentor.load(cws_model_path)
 words = segmentor.segment('亚硝酸盐是一种化学物质')
 print('\t'.join(words))

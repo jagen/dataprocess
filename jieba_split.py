@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys, io
 import jieba
+import sys
+import io
 
 def main():
     jieba.load_userdict('userdict.txt')

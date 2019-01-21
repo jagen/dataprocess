@@ -46,3 +46,4 @@ print('\n')
 print('梦游')
 for key in model.similar_by_word(u'梦游', topn=100):
     print(key)
+    
